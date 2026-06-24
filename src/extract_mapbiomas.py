@@ -14,7 +14,7 @@ def extract_raw_sheets_to_bronze():
     project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
     
     raw_dir = os.path.join(project_root, "dados", "00.raw")
-    bronze_dir = init_directory_structure(project_root)
+    bronze_dir = os.path.join(project_root, "dados", "01.bronze")
     
     print(f"[*] Buscando planilhas originais em: {raw_dir}")
     excel_files = glob.glob(os.path.join(raw_dir, "*.xlsx"))
@@ -40,11 +40,15 @@ def extract_raw_sheets_to_bronze():
     # Loop por todas as planilhas encontradas na camada Raw
     for file_path in excel_files:
         file_name = os.path.basename(file_path)
-        print(f"\n[+] Lendo metadados do arquivo: {file_name}")
         
+        if file_name.startswith("~$"):
+            continue
+        
+        print(f"\n[+] Lendo metadados do arquivo: {file_name}")
+
         try:
             # Carrega apenas os nomes das abas para evitar gargalo de memória RAM
-            excel_obj = pd.ExcelFile(file_path)
+            excel_obj = pd.ExcelFile(file_path, engine='openpyxl')
             available_sheets = excel_obj.sheet_names
             
             for sheet in available_sheets:
@@ -62,7 +66,7 @@ def extract_raw_sheets_to_bronze():
                     print(f"    -> Extraindo aba alvo encontrada: '{sheet}'")
                     
                     # Carrega os dados da aba específica
-                    df = pd.read_excel(file_path, sheet_name=sheet)
+                    df = pd.read_excel(file_path, sheet_name=sheet, engine='openpyxl')
                     
                     # Nome do arquivo CSV de saída padronizado em caixa baixa
                     output_csv_name = f"{sheet.strip().lower()}.csv"

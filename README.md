@@ -41,7 +41,6 @@ Para garantir a reprodutibilidade, governança e integridade das transformaçõe
 │      
 │
 ├── scripts/                 # Código Fonte Estruturado (Scripts de Produção)
-│   ├── __init__.py          # Exemplos
 │   ├── init_datalake.py     # Cria a árvore de diretórios local para simular o DataLake do Google Drive do time
 │   ├── tratamento.py        # Processamento e transformações bronze->silver
 │   └── agregacao.py         # Regras de negócio e KPIs silver->gold
