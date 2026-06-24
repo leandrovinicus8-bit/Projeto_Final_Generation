@@ -4,6 +4,7 @@
 data/
 dados/
 *.xlsx
+*.parquet
 
 # =========================================================================
 # PYTHON & JUPYTER - CACHES E AMBIENTE VIRTUAL
@@ -34,4 +35,15 @@ Pitch_apresentacao.gdoc
 # Sistema Operacional
 .DS_Store
 Thumbs.db
+*.ini
 
+
+.env
+.env.local
+*.pem
+id_rsa
+
+node_modules/
+.venv/
+venv/
+__pycache__/
