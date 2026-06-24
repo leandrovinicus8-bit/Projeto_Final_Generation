@@ -1,0 +1,21 @@
+# Estrutura de dados e engenharia principal (DataFrames)
+pandas>=2.0.0
+
+# Manipulação de matrizes e suporte matemático/estatístico
+numpy>=1.24.0
+
+# Motor de leitura/escrita e compressão de arquivos colunares Apache Parquet
+pyarrow>=12.0.0
+
+# Reisições HTTP para extração de microdados climáticos via API (NASA POWER)
+requests>=2.30.0
+
+# Framework para a interface web analítica do usuário final
+streamlit>=1.25.0
+
+# Biblioteca analítica para renderizar gráficos dinâmicos e interativos
+plotly>=5.15.0
+
+# Suporte opcional de backend estatístico e gráficos estáticos clássicos
+matplotlib>=3.7.0
+scipy>=1.10.0
